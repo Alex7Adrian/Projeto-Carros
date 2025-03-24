@@ -18,10 +18,7 @@ const estados = {
       { acao: "Tentar ligar o carro", transicao: "s2", probabilidade: 0.15 },
       { acao: "Tentar ligar o carro", transicao: "s0", probabilidade: 0.05 }
     ],
-    s1: [
-        { acao: "Substituir a bateria", transicao: "s3", probabilidade: 0.6 },  
-        { acao: "Substituir a bateria", transicao: "f1", probabilidade: 0.2 },  
-        { acao: "Substituir a bateria", transicao: "f2", probabilidade: 0.2 },  
+    s1: [  
         { acao: "Usar o carro normalmente", transicao: "f2", probabilidade: 0.4 }, 
         { acao: "Usar o carro normalmente", transicao: "f3", probabilidade: 0.3 },
         { acao: "Levar à oficina para verificação", transicao: "n1", probabilidade: 0.5 }, 
