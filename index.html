@@ -5,28 +5,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Simulação de Processo de Decisão de Markov</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
   <div class="container">
     <h1>Simulação de Processo de Decisão de Markov</h1>
     
+    <!-- Estado Atual -->
     <div id="estadoAtual">
       <h2>Estado Atual: Carro Desligado</h2>
     </div>
 
+    <!-- Final Feliz -->
+   <div id="finalFelizContador">
+     <h3>Finais Felizes: <span id="finalFelizNumero">0</span></h3>
+   </div>
+
+
+    <!-- Gráfico -->
+    <canvas id="qTableChart"></canvas>
+
+    <!-- Ações -->
     <div class="acoes">
-      <button id="btnAcao">Tentar Ligar o Carro</button>
+      <button id="btnAcao" style="display: none;">Executar Ação</button>
       <button id="btnSubstituirBateria" style="display: none;">Substituir a Bateria</button>
       <button id="btnLevarOficina" style="display: none;">Levar à Oficina</button>
+      <button id="btnReiniciar">Reiniciar Simulação</button>
     </div>
 
+    <!-- Log -->
     <div id="log" class="log">
       <h3>Log de Ações</h3>
       <ul id="logList">
         <li>Estado Inicial: Carro Desligado</li>
       </ul>
     </div>
-    
+
+    <!-- Display Q-values -->
+    <div id="q-values">
+      <h3>Valores de Q (Ações em cada Estado)</h3>
+      <pre id="qTable"></pre>
+    </div>
   </div>
 
   <script src="script.js"></script>
