@@ -2,6 +2,13 @@
 
 Este projeto é uma simulação de um **Processo de Decisão de Markov** (MDP) aplicado a um carro, onde o usuário pode interagir com o sistema para simular diferentes cenários relacionados ao estado de um carro. O objetivo é demonstrar como as **ações**, **probabilidades de transição** e **estados** podem ser utilizados para modelar decisões em um ambiente estocástico.
 
+
+/**
+ * Nome do arquivo: train_model.py
+ * Data de Atualização:14/05/2025 
+ * Autor: Alex Adrian Alves Silva
+ * Matrícula: 01647081
+   
 ## **Objetivo**
 
 O objetivo do projeto é simular a interação de um carro com falhas, que podem ocorrer em diferentes estados, como "carro desligado", "carro ligado com sucesso", "carro com falha", etc. O usuário pode tomar decisões para substituir peças, levar o carro à oficina ou continuar usando o carro, e o sistema responde com base em probabilidades predefinidas.
