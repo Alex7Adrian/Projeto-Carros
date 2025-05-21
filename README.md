@@ -58,3 +58,19 @@ O objetivo do projeto é simular a interação de um carro com falhas, que podem
 - Se o carro foi ligado com sucesso (`s1`), o usuário pode substituir a bateria, usar o carro normalmente ou levar à oficina. As probabilidades dessas transições são baseadas nas condições do carro.
 - Dependendo da escolha do usuário e da probabilidade associada, o carro pode ter falhas ou continuar funcionando até ser levado à oficina para diagnóstico.
 
+## **📈 Como interpretar a forma do gráfico?**
+Comportamento do Gráfico	Interpretação
+📈 Sobe gradualmente	O agente está aprendendo estratégias melhores com o tempo.
+📉 Cai rapidamente	O agente tomou ações ruins que geraram recompensas negativas.
+🔁 Oscila bastante	O ambiente tem incerteza ou o agente ainda não convergiu para boas ações.
+➖ Estabiliza (reta)	O agente parou de aprender, talvez já tenha aprendido tudo o possível.
+
+## **Estado alcançado	Probabilidade	Recompensa**
+s1 (Carro Ligado)	0.8	✅ +10
+s2 (Falha ao Ligar)	0.15	❌ -5
+s0 (Mesmo estado)	0.05	❌ -5
+
+→ Com 80% de chance ele recebe +10
+→ Com 20% de chance, -5
+
+Então, com o tempo, o Q-learning percebe que essa ação vale a pena porque a recompensa média dela tende a ser positiva, e o valor Q aumenta.
