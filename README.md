@@ -1,4 +1,4 @@
-# **Simulação de Processo de Decisão de Markov (MDP) - Carro 🚗 **
+# Simulação de Processo de Decisão de Markov (MDP) - Carro 🚗 
 
 Este projeto é uma simulação de um **Processo de Decisão de Markov** (MDP) aplicado a um carro, onde o usuário pode interagir com o sistema para simular diferentes cenários relacionados ao estado de um carro. O objetivo é demonstrar como as **ações**, **probabilidades de transição** e **estados** podem ser utilizados para modelar decisões em um ambiente estocástico.
 
