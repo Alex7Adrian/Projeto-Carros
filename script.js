@@ -1,3 +1,4 @@
+// Definição dos possíveis estados do carro
 const estados = {
   s0: "Carro Desligado",
   s1: "Carro Ligado com Sucesso",
@@ -14,7 +15,7 @@ const estados = {
 
 const finaisFelizes = ["s1", "n2"];
 let finaisFelizesCount = 0;
-
+// Transições e ações
 const transicoes = {
   s0: [
     { acao: "Tentar ligar o carro", transicao: "s1", probabilidade: 0.8 },
@@ -48,7 +49,8 @@ const acoes = {
   n2: ["Testar novamente"],
   n3: ["Levar para outra oficina"]
 };
-
+// Criação da Q-Table(INDICA QUAIS AÇOES SAO MAIS RECOMENDADAS)
+// Inicializa a Q-Table com valores aleatórios
 let qTable = {};
 for (let estado in estados) {
   qTable[estado] = {};
@@ -97,7 +99,7 @@ function atualizarBotoes() {
   const btnAcao = document.getElementById("btnAcao");
   const btnSubstituirBateria = document.getElementById("btnSubstituirBateria");
   const btnLevarOficina = document.getElementById("btnLevarOficina");
-
+//ESCONDER INICIALMENTE OS BOTOES
   btnAcao.style.display = "none";
   btnSubstituirBateria.style.display = "none";
   btnLevarOficina.style.display = "none";
@@ -114,7 +116,8 @@ function atualizarBotoes() {
     btnLevarOficina.style.display = "block";
   }
 }
-
+// Função para escolher a ação com base na política epsilon-greedy
+// A função escolhe uma ação aleatória com probabilidade epsilon ou a ação com o maior valor Q
 function escolherAcao() {
   const disponiveis = acoes[estadoAtual];
   if (!disponiveis || disponiveis.length === 0) return null;
@@ -127,7 +130,8 @@ function escolherAcao() {
     });
   }
 }
-
+//Função para atualizar a Q-Table com base na ação escolhida, recompensa recebida e novo estado
+// A função atualiza o valor Q da ação escolhida no estado atual com base na recompensa recebida e no valor Q máximo do novo estado
 function atualizarQTable(acao, recompensa, novoEstado) {
   const qValorAtual = qTable[estadoAtual][acao];
   const maxNovoQ = Math.max(...(acoes[novoEstado] || []).map(a => qTable[novoEstado]?.[a] || 0));
@@ -166,10 +170,13 @@ function executarAcao() {
 
   let acumulado = 0;
   const sorteio = Math.random();
+  //SORTEIO ALEATORIO ENTRE 0 E 1
   let novoEstado = estadoAtual;
 
   for (const t of transicoesPossiveis) {
-    acumulado += t.probabilidade;
+    acumulado += t.probabilidade;//VAI SOMANDO AS PROBABILIDADES
+    //SE O SORTEIO FOR MENOR OU IGUAL A PROBABILIDADE ACUMULADA, ESCOLHE O NOVO ESTADO
+    //ESTADOS COM MAIS PROBABILIDADE TEM MAIOR CHANCE DE SER ESCOLHIDOS,COMO EM UMA ROLETA
     if (sorteio <= acumulado) {
       novoEstado = t.transicao;
       break;
@@ -179,9 +186,9 @@ function executarAcao() {
   if (finaisFelizes.includes(novoEstado)) {
     finaisFelizesCount++;
   }
-
+// A recompensa é positiva se o novo estado for um final feliz, negativa caso contrário
   const recompensa = novoEstado === "s1" ? 10 : -5;
-
+//APLICAR O Q-LEARNING ATUALIZANDO A Q-TABLE COM BASE NA RECOMPENSA E NAS AÇOES POSSIVEIS
   atualizarQTable(acaoEscolhida, recompensa, novoEstado);
   estadoAtual = novoEstado;
   adicionarLog(acaoEscolhida, novoEstado);
