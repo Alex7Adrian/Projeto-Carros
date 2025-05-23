@@ -5,7 +5,7 @@ Este projeto é uma simulação de um **Processo de Decisão de Markov** (MDP) a
 
 
  * Nome do arquivo: script.js
- * Data de Atualização:14/05/2025 
+ * Data de Atualização:23/05/2025 
  * Autor: Alex Adrian Alves Silva
  * Matrícula: 01647081
    
